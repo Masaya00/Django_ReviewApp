@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock customcss %}
+
+{% block content %}
+
+<main role="main">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+          <img src="{% static 'image/mediterranean-cuisine-2378758_1920.jpg' %}" alt="">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>おいしいお店探し</h1>
+            <p>おいしいお店を探しましょう</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+          <img src="{% static 'image/mediterranean-cuisine-2378758_1920.jpg' %}" alt="">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>このお店はどうですか</h1>
+            <p>このお店はとてもおいしいです</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+          <img src="{% static 'image/mediterranean-cuisine-2378758_1920.jpg' %}" alt="">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>ここに行ってみてはどう？</h1>
+            <p>おいしい料理が食べられます</p>
+            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+    <section class="search-sec">
+        <div class="container">
+            <form method="GET" action="{% url 'ReviewApp:search' %}" name="searchform">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                <select name="pref" class="form-control search-slt">
+                                    <option value="">都道府県</option>
+                                    {% for item in pref_list %}
+                                        <option value="{{ item.pref }}">{{ item.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                <select name="category" class="form-control search-slt">
+                                    <option value="">カテゴリ</option>
+                                    {% for item in category_list %}
+                                    <option value="{{ item.category }}">{{ item.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        <div class="col-log-3 col-md-3 col-sm-12 p-0">
+                            <input class="form-control search-slt" type="text" placeholder="フリーワード" aria-label="Search" name="freeword">
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                            <button type="submit" class="btn search-btn">検索</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+  <!-- FOOTER -->
+  <footer class="container">
+    <p class="float-right"><a href="#">Back to top</a></p>
+    <p>&copy; 2017-2019 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+  </footer>
+</main>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+
+
+{% endblock content %}
