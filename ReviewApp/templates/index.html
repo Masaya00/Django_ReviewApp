@@ -73,10 +73,10 @@
                                 </select>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                <select name="category" class="form-control search-slt">
+                                <select name="category_l" class="form-control search-slt">
                                     <option value="">カテゴリ</option>
                                     {% for item in category_list %}
-                                    <option value="{{ item.category }}">{{ item.name }}</option>
+                                    <option value="{{ item.category_l }}">{{ item.name }}</option>
                                     {% endfor %}
                                 </select>
                             </div>

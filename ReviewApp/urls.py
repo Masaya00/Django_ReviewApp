@@ -6,6 +6,6 @@ app_name = 'ReviewApp'
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
-    path('search', views.Search,name='search')
+    path('search', views.Search, name='search'),
 
 ]

@@ -3,7 +3,7 @@ from django.db import models
 # Category, Pref, Reviewモデルの作成をします。
 
 class Category(models.Model):
-    category = models.CharField('業態カテゴリ', max_length=10, blank=False)
+    category_l = models.CharField('業態カテゴリ', max_length=10, blank=False)
     name = models.CharField('業態名', max_length=30, blank=False)
 
     def __str__(self):
