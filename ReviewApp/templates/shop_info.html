@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block customcss %}
+    <link rel="stylesheet" href="{% static 'css/shop_info.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="section-title">{{ restaurants_info.0.1 }}</h2>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div id="shop_carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{ restaurants_info.0.5 }}" alt="{{ restaurants_info.0.1 }}" class="d-block w-100">
+                    </div>
+                    {% if restaurants_info.0.6 %}
+                    <div class="carousel-item">
+                        <img src="{{ restaurants_info.0.6 }}" class="d-block w-100" alt="{{ restaurants_info.0.1 }}">
+                    </div>
+                    {% endif %}
+                </div>
+                <a href="#shop_carousel" class="carousel-control-prev" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">前の画像</span>
+                </a>
+                <a href="#shop_carousel" role="button" class="carousel-control-next" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">次の画像</span>
+                </a>
+            </div>
+            <br>
+        </div>
+
+        <div class="col-md-8">
+            <p>{{ restaurants_info.0.13|linebreaksbr }}</p>
+            <a href="{{ restaurants_info.0.3 }}" class="btn common-btn" target="_blank">お店ページ <i class="fas fa-external-link-alt"></i></a>
+            <a href="{{ restaurants_info.0.4 }}" class="btn common-btn" target="_blank">お店ページ(モバイル) <i class="fas fa-external-link-alt"></i></a>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="section-title">店舗基本情報</h2>
+            <table class="table">
+                <tr>
+                    <td>店舗名</td>
+                    <td>{{ restaurants_info.0.1 }}</td>
+                </tr>
+                <tr>
+                    <td>住所</td>
+                    <td>{{ restaurants_info.0.7 }}</td>
+                </tr>
+                <tr>
+                    <td>TEL</td>
+                    <td>{{ restaurants_info.0.8 }}</td>
+                </tr>
+                <tr>
+                    <td>アクセス</td>
+                    <td>{{ restaurants_info.0.9 }}<br>{{ restaurants_info.0.10 }}</td>
+                </tr>
+                <tr>
+                    <td>地図</td>
+                    <td>
+                        <script src="http://maps.google.com/maps/api/js?key={AIzaSyBGHfDNz5s7rXHputVg7tH2cAjH5rcJk1w}&language=ja"></script>
+                        <div id="map" style="width: 800px; height: 600px;></div>
+                        <script type="text/javascript">
+
+                        </script>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -94,7 +94,18 @@ def extract_restaurant_info(restaurants: 'restaurant response') -> 'restaurant l
 
     return restaurant_list
 
+def ShopInfo(request, restid):
+    keyid = get_keyid()
+    id = restid
+    query = get_gnavi_data(id,'' ,'', '', 1)
+    res_list = rest_search(query)
+    restaurants_info = extract_restaurant_info(res_list)
 
+    params = {
+        'title': '店舗詳細',
+        'restaurants_info': restaurants_info,
+    }
 
+    return render(request, 'shop_info.html', params)
 
 
