@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block customcss %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock customcss %}
+{% block content %}
+<div class="container">
+    <div class="loginPage_contents">
+        <h3 class="h3 loginPage_contents_title">またのご利用をお待ちしております</h3>
+        <br>
+        <hr>
+        <br>
+        <a href="{% url 'ReviewApp:login' %}">ログインページ</a>
+    </div>
+</div>
+{% endblock %}

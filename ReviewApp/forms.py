@@ -1,5 +1,7 @@
 from django import forms
-from .models import Category, Pref
+from .models import Category, Pref, User, Review
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 
 class SearchForm(forms.Form):
     selected_pref = forms.ModelChoiceField(
@@ -18,3 +20,27 @@ class SearchForm(forms.Form):
         super().__init__(*args, **kwargs)
         selected_pref = self.fields['selected_pref']
         selected_category = self.fields['selected_category']
+
+class SignUpForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            for field in self.fields.values():
+                field.widget.attrs['class'] = 'form-control'
+                field.widget.attrs['placeholder'] = field.label
+
+
+class LoginForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+            field.widget.attrs['placeholder'] = field.label
+
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['score', 'comment']

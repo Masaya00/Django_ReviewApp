@@ -4,12 +4,16 @@ CreateView,
 ListView,
 UpdateView,
 DeleteView,
-TemplateView
+TemplateView,
 )
-from .models import Pref, Category
-from .forms import SearchForm
+from .models import Pref, Category, User, Review
+from .forms import SearchForm, SignUpForm, LoginForm, ReviewForm
 import json
 import requests
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.views import LoginView, LogoutView
+from django.db.models import Avg
+from django.contrib import messages
 
 def get_keyid():
     return 'f10f93e3a0c0b5419a7a4ded6b3864a1'
@@ -100,12 +104,81 @@ def ShopInfo(request, restid):
     query = get_gnavi_data(id,'' ,'', '', 1)
     res_list = rest_search(query)
     restaurants_info = extract_restaurant_info(res_list)
+    review_count = Review.objects.filter(shop_id=restid).count()
+    score_ave = Review.objects.filter(shop_id=restid).aggregate(Avg('score'))
+    average = score_ave['score__avg']
+
+    if average:
+        average_rate = average / 5 * 100
+    else:
+        average_rate = 0
+
+    if request.method == 'GET':
+        review_form = ReviewForm()
+        review_list = Review.objects.filter(shop_id=restid)
+
+    else:
+        form = ReviewForm(data=request.POST)
+        score = request.POST['score']
+        comment = request.POST['comment']
+
+        if form.is_valid():
+            review = Review()
+            review.shop_id = restid
+            review.shop_name = restaurants_info[0][1]
+            review.shop_kana = restaurants_info[0][2]
+            review.shop_address = restaurants_info[0][7]
+            review.image_url = restaurants_info[0][5]
+            review.user = request.user
+            review.score = score
+            review.comment = comment
+
+            is_exist = 0
+            is_exist = Review.objects.filter(shop_id=review.shop_id).filter(user=review.user).count()
+
+            if not is_exist == 0:
+                messages.error(request, '既にレビューを投稿済みです。')
+                return redirect('ReviewApp:shop_info', restid)
+            else:
+                review.save()
+                messages.success(request, 'レビューを投稿しました。')
+                return redirect('ReviewApp:shop_info', restid)
+
+        else:
+            messages.error(request, 'エラーがあります。')
+            return redirect('ReviewApp:shop_info', restid)
+        return render(request, 'index.html', {})
 
     params = {
         'title': '店舗詳細',
+        'review_count': review_count,
         'restaurants_info': restaurants_info,
+        'review_form': review_form,
+        'review_list': review_list,
+        'average': average,
+        'average_rate': average_rate,
     }
 
     return render(request, 'shop_info.html', params)
 
+class SignUp(CreateView):
+    form_class = SignUpForm
+    template_name = 'signup.html'
 
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(data=request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('ReviewApp:index')
+        return render(request, 'signup.html', {'form': form})
+
+class Login(LoginView):
+    form_class = LoginForm
+    template_name = 'login.html'
+
+class Logout(LogoutView):
+    template_name = 'logout.html'
