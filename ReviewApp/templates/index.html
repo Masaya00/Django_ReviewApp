@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="carousel-item">
-          <img src="{% static 'image/mediterranean-cuisine-2378758_1920.jpg' %}" alt="">
+          <img src="{% static 'image/salad-2068220_1920.jpg' %}" alt="">
         <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
         <div class="container">
           <div class="carousel-caption">
@@ -92,11 +92,56 @@
             </form>
         </div>
     </section>
-  <!-- FOOTER -->
 
+    <div class="container">
+        <h2 class="section-title">おすすめ</h2>
+    </div>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                {% for item in pickup_list %}
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                    <img src="{{ item.5 }}" alt="{{ item.1 }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.1 }}</h5>
+                            <p class="card-text">{{ item.7 }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="{% url 'ReviewApp:shop_info' item.0 %}" class="btn common-btn">詳細を見る</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <h2 class="section-title">最近のレビュー</h2>
+        <div class="row">
+            <div class="MultiCarousel" data-items="'1,3,5,6" data-slide="1" id="MultiCarousel" data-interval="1000">
+                <div class="MultiCarousel-inner">
+                    {% for item in review_list %}
+                    <div class="item">
+                        <div class="pad15">
+                            <img src="{{ item.image_url }}" style="width: 100%;">
+                            <p>{{ item.shop_name }}</p>
+                            <p>「{{ item.comment }}」</p>
+                            <a href="{% url 'ReviewApp:shop_info' item.shop_id %}" class="btn common-btn">詳細を見る</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <button class="btn btn-primary leftLst"></button>
+                <button class="btn btn-primary rightLst"></button>
+            </div>
+        </div>
+    </div>
 </main>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
-
+<script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+<script src="{% static 'js/index.js' %}"></script>
 
 {% endblock content %}

@@ -21,3 +21,9 @@ body {
     border-top: 1px solid rgb(199, 199, 199);
     }
 
+.btn {
+    background-color: #ffaa00;
+    color: white;
+    border-radius: 10px;
+
+}

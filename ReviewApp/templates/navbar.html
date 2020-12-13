@@ -1,11 +1,9 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-
 <div class="fixed-top">
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #ffaa00">
-  <a class="navbar-brand" style="color: black" href="{% url 'ReviewApp:index' %}">食べログ</a>
-  <button class="navbar-toggler"type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="background-color: blue; color: white;" >
+  <a class="navbar-brand" style="color: white;" href="{% url 'ReviewApp:index' %}">食べログ</a>
+  <button class="navbar-toggler"type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -16,14 +14,14 @@
       </li>
         {% if user.is_authenticated %}
         <li class="nav-item">
-            <a class="nav-item nav-link" href="{% url 'ReviewApp:logout' %}">ログアウト</a>
+            <a class="nav-item nav-link" href="{% url 'ReviewApp:logout' %}" style="color: white">ログアウト</a>
         </li>
         {% else %}
         <li class="nav-item">
-            <a class="nav-item nav-link" href="{% url 'ReviewApp:login' %}">ログイン</a>
+            <a class="nav-item nav-link" href="{% url 'ReviewApp:login' %}" style="color: white">ログイン</a>
         </li>
         <li class="nav-item">
-            <a class="nav-item nav-link" href="{% url 'ReviewApp:signup' %}">新規会員登録</a>
+            <a class="nav-item nav-link" href="{% url 'ReviewApp:signup' %}" style="color: white">新規会員登録</a>
         </li>
         {% endif %}
     </ul>
@@ -51,7 +49,7 @@
           </li>
           <span> </span>
           <li class="nav-item">
-              <button type="submit" class="btn common-btn">検索</button>
+              <button type="submit" class="btn common-btn" style='border-color: white; color: white'>検索</button>
           </li>
           </ul>
       </form>
