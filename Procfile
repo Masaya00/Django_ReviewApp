@@ -1,1 +1,1 @@
-web: gunicorn ReviewApp.wsgi
+web: gunicorn Review.wsgi
