@@ -1,1 +1,1 @@
-web: gunicorn Review.wsgi
+web: gunicorn Review.wsgi --log-file-
