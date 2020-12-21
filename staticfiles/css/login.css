@@ -1,0 +1,16 @@
+body {
+    padding-top: 55px;
+}
+
+.loginPage_contents {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    padding-bottom: 75px;
+}
+
+.loginPage_contents_title {
+    margin-top: 12vh;
+}
+
