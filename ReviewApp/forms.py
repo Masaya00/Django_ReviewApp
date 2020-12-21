@@ -2,7 +2,6 @@ from django import forms
 from .models import Category, Pref, User, Review
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
-
 class SearchForm(forms.Form):
     selected_pref = forms.ModelChoiceField(
         label='都道府県',
