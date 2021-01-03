@@ -1,7 +1,9 @@
 .common-btn {
     background-color: #ffaa00;
-    color: white;
+    color: black;
     border-radius: 10px;
     margin-left: 5px;
+    border-color: black;
 }
+
 
