@@ -8,7 +8,7 @@ SECRET_KEY = 'v1g59rno+3!ihmve0c0sxkq9=izr)tbe8@+b1!*4m=f79$ms3u'
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'gurunavireviewapp.herokuapp.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
