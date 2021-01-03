@@ -1,16 +1,16 @@
-asgiref @ file:///tmp/build/80754af9/asgiref_1605055780383/work
+asgiref==3.3.1
 certifi==2020.12.5
 chardet==3.0.4
 dj-database-url==0.5.0
-Django @ file:///tmp/build/80754af9/django_1606860386887/work
+Django==3.1.4
 django-forms-bootstrap==3.1.0
 django-heroku==0.3.1
 gunicorn==20.0.4
 idna==2.10
-psycopg2 @ file:///opt/concourse/worker/volumes/live/c8a4b965-959f-4e6c-7792-4aa881d63c8d/volume/psycopg2_1594305121341/work
-pytz @ file:///tmp/build/80754af9/pytz_1606604771399/work
+psycopg2==2.8.5
+pytz==2020.4
 requests==2.25.0
 six==1.15.0
-sqlparse @ file:///tmp/build/80754af9/sqlparse_1602184451250/work
+sqlparse==0.4.1
 urllib3==1.26.2
 whitenoise==5.2.0
