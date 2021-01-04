@@ -4,7 +4,7 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = 'v1g59rno+3!ihmve0c0sxkq9=izr)tbe8@+b1!*4m=f79$ms3u'
+
 
 DEBUG = False
 
