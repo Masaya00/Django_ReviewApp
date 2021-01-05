@@ -18,7 +18,7 @@ $(document).ready(function () {
         ResCarouselSize();
     });
 
-    //表示する画像サイズを関数で定義
+
     function ResCarouselSize() {
         var incno = 0;
         var dataItems = ("data-items");
@@ -63,7 +63,7 @@ $(document).ready(function () {
     }
 
 
-    //カルーセルで画像を雨後隠すための関数
+
     function ResCarousel(e, el, s) {
         var leftBtn = ('.leftLst');
         var rightBtn = ('.rightLst');
@@ -93,7 +93,7 @@ $(document).ready(function () {
         $(el + ' ' + itemsDiv).css('transform', 'translateX(' + -translateXval + 'px)');
     }
 
-    //ボタンクリック時の動きを定義
+
     function click(ell, ee) {
         var Parent = "#" + $(ee).parent().attr("id");
         var slide = $(Parent).attr("data-slide");

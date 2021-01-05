@@ -65,7 +65,7 @@ textarea {
   border-radius: 10px;
 }
 
-/* スコア入力の★ */
+
 .evaluation{
   display: flex;
   flex-direction: row-reverse;
@@ -96,7 +96,7 @@ textarea {
   color: #ffcc33;
 }
 
-/* スコア表示の★ */
+
 .star-rating {
   position: relative;
   width: 5em;
